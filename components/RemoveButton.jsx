@@ -9,7 +9,7 @@ export default function RemoveButton(props) {
     const confirmed = confirm("Are you sure you want to delete this topic?");
 
     if (confirmed) {
-      const res = await fetch(`http://localhost:3000/api/topics?id=${props.id}`, {
+      const res = await fetch(`http://topic-app-crud-21.vercel.app/api/topics?id=${props.id}`, {
         method: "DELETE",
       });
       if (res.ok) {

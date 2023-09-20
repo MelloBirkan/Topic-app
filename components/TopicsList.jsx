@@ -4,7 +4,7 @@ import { PencilSquareIcon } from "@heroicons/react/24/solid";
 
 const getTopics = async () => {
   try {
-    const res = await fetch("http://localhost:3000/api/topics", {
+    const res = await fetch("http://topic-app-crud-21.vercel.app/api/topics", {
       cache: "no-store",
     });
 
