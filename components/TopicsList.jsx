@@ -1,24 +1,46 @@
 import Link from "next/link";
 import RemoveButton from "./RemoveButton";
-import { PencilSquareIcon } from "@heroicons/react/24/solid"
+import { PencilSquareIcon } from "@heroicons/react/24/solid";
 
-export default function TopicsList() {
+const getTopics = async () => {
+  try {
+    const res = await fetch("http://localhost:3000/api/topics", {
+      cache: "no-store",
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch topics");
+    }
+
+    return res.json();
+  } catch (error) {
+    console.log("Error fetching topics", error);
+  }
+};
+
+export default async function TopicsList() {
+  const topics = await getTopics();
+
   return (
     <>
-      <div className="p-4 border border-slate-300 my-3 flex justify-between gap-5 items-start">
-        <div>
-          <h2 className="font-bold text-2xl">Topic Title</h2>
-          <div>Topic Description</div>
-        </div>
+      {topics.map((topic) => (
+        <div
+          key={topic.id}
+          className="p-4 border border-slate-300 my-3 flex justify-between gap-5 items-start"
+        >
+          <div>
+            <h2 className="font-bold text-2xl">{topic.title}</h2>
+            <div>{topic.description}</div>
+          </div>
 
-        <div className="flex gap-2">
-          <RemoveButton />
-          <Link href="./editTopic/123" >
-            <PencilSquareIcon className="w-6 text-yellow-600" />
-          </Link>
+          <div className="flex gap-2">
+            <RemoveButton id={topic._id}/>
+            <Link href={`/editTopic/${topic._id}`}>
+              <PencilSquareIcon className="w-6 text-yellow-600" />
+            </Link>
+          </div>
         </div>
-      </div>
+      ))}
     </>
-  )
-
+  );
 }

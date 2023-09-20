@@ -3,8 +3,8 @@ import Link from "next/link";
 export default function Navbar() {
   return (
     <nav className="flex justify-between items-center bg-slate-800 px-8 py-3">
-          <Link className="text-slate-50 font-bold" href="./">Home</Link>
-          <Link className="bg-slate-100 p-2" href="./addTopic">Add Topic</Link>
+          <Link className="text-slate-50 font-bold" href="/">Home</Link>
+          <Link className="bg-slate-100 p-2" href="/addTopic">Add Topic</Link>
     </nav>
   );
 }
