@@ -1,6 +1,5 @@
 "use client";
 
-import { headers } from "@/next.config";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -19,7 +18,7 @@ export default function AddTopic() {
     }
 
     try {
-      const res = await fetch("http://topic-app-crud-21.vercel.app/api/topics", {
+      const res = await fetch("http://localhost:3000/api/topics", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
