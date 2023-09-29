@@ -9,12 +9,9 @@ export default function RemoveButton(props) {
     const confirmed = confirm("Are you sure you want to delete this topic?");
 
     if (confirmed) {
-      const res = await fetch(
-        `http://localhost:3000/api/topics?id=${props.id}`,
-        {
-          method: "DELETE",
-        },
-      );
+      const res = await fetch(`/api/topics?id=${props.id}`, {
+        method: "DELETE",
+      });
       if (res.ok) {
         router.refresh();
       }
