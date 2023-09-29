@@ -3,6 +3,7 @@ export default function Home() {
     <>
       {/*<TopicsList />*/}
       <h1>hello</h1>
+      <div>3</div>
     </>
   );
 }
